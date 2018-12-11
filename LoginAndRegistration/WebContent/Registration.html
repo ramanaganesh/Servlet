@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register form</title>
+</head>
+<body bgcolor="cyan">
+<form name="myform" action="registerpage" onsubmit="return validateForm()" method="post">
+	Name:<input type="text" name="userName"><br></br>
+	Email-Id:<input type="email" name="emailId"><br></br>
+	Role:<input type="text" name="role"><br></br>
+	Password:<input type="password" name="password"><br></br>
+	<input type="submit" value="Register">
+	<br></br>
+	</form>
+	<p>Login?<a href="login.html">login</a>
+	<script>
+	function validateForm()
+	{
+	var x=document.forms.myform.password.value;
+	var regex;
+	if(x.length<8)
+		{
+			alert("Password must contain 8 character");
+			return false;
+		}
+	regex=/[0-9]/;
+	if(!regex.test(x))
+		{
+			alert("Password must be contain atleast one number");
+			return false;
+		}
+	regex=/[A-Z]/;
+	if(!regex.test(x))
+		{
+			alert("Password must be contain atleast one upper case letter");
+			return false;
+		}
+	regex=/[a-z]/;
+	if(!regex.test(x))
+		{
+			alert("Password must be contain atleast one lower case letter");
+			return false;
+		}
+	
+	}
+	</script>
+</body>
+</html>
+
