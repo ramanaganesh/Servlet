@@ -23,14 +23,7 @@
   	<servlet-name>login</servlet-name>
   	<servlet-class>com.bridgelabz.controller.LoginPage</servlet-class>
   </servlet>
-   <servlet>
-  	<servlet-name>homePage</servlet-name>
-  	<servlet-class>com.bridgelabz.controller.HomePage</servlet-class>
-  </servlet>
-   <servlet>
-  	<servlet-name>admin</servlet-name>
-  	<servlet-class>com.bridgelabz.controller.AdminPage</servlet-class>
-  </servlet>
+ 
     <servlet>
   	<servlet-name>register</servlet-name>
   	<servlet-class>com.bridgelabz.controller.RegisterPage</servlet-class>
@@ -43,12 +36,6 @@
   	<servlet-name>register</servlet-name>
   	<url-pattern>/registerpage</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
-  	<servlet-name>homePage</servlet-name>
-  	<url-pattern>/welcomePage</url-pattern>
-  </servlet-mapping>
-   <servlet-mapping>
-  	<servlet-name>admin</servlet-name>
-  	<url-pattern>/adminpage</url-pattern>
-  </servlet-mapping>
+   
+ 
 </web-app>

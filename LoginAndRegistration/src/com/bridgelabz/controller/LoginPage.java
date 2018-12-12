@@ -70,15 +70,7 @@ public class LoginPage extends HttpServlet
 				
 			}
 			}
-	        
-			else if(emailName.length()==0 && password.length()==0)
-		        {
-						System.out.println(emailName.length()+ " " +password.length());
-				
-						flag=1;
-			        	writer.print("Please, fill the field first");
-			        	request.getRequestDispatcher("login.html").include(request, response);
-			    }
+	       
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -86,7 +78,7 @@ public class LoginPage extends HttpServlet
 		}
          if(flag==0)
 		{
-					System.out.println(flag);
+			//		System.out.println(flag);
 		        	writer.print("Sorry,you are not authorized one to access database please register!");
 		        	request.getRequestDispatcher("login.html").include(request, response);
 		        

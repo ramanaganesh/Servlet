@@ -23,4 +23,6 @@ while(resultSet.next())
 }
 
 %>  
+
+</body>
 </html>
