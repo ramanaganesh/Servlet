@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import com.bridgelabz.repository.Connecting;
 
 public class RegisterPage extends HttpServlet
 {
+	
 	 public void doPost(HttpServletRequest request , HttpServletResponse response)throws ServletException , IOException 
 	 {
 		 response.setContentType("text/html");
@@ -26,7 +28,10 @@ public class RegisterPage extends HttpServlet
 	        String emailId = request.getParameter("emailId");
 	        String password = request.getParameter("password");
 	        String role=request.getParameter("role");
-	        
+	        ServletContext context=getServletContext();
+	        String secretKey=context.getInitParameter("key"); 
+	        System.out.println(secretKey+" "+password);
+	        String encryptedPassword = AES.encrypt(password, secretKey) ;
 			Connection con=Connecting.getConnect();	
 				
 	           
@@ -51,7 +56,7 @@ public class RegisterPage extends HttpServlet
 						PreparedStatement ps = con.prepareStatement("insert into userdetails values(?,?,?,?)");
 						ps.setString(1, name);
 						ps.setString(2, emailId);
-						ps.setString(3, password);
+						ps.setString(3, encryptedPassword);
 						ps.setString(4,role);
 						int i = ps.executeUpdate();
 						if (i > 0)

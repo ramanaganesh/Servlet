@@ -13,9 +13,9 @@ import com.bridgelabz.repository.Connecting;
 public class FilteringDatabase implements Filter
 {
 
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
+	FilterConfig config;
+	public void init(FilterConfig config) throws ServletException {
+		this.config=config;
 		
 	}
 
@@ -35,9 +35,14 @@ public class FilteringDatabase implements Filter
 			ResultSet resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()!=false)
 			{
-				if(resultSet.getString(2).equals(email) && resultSet.getString(4).equals("admin"))
+				String secretKey=config.getServletContext().getInitParameter("key");
+			//	System.out.println("Filter");
+			//	System.out.println(secretKey+" "+resultSet.getString(3));
+		        String decryptedPassword = AES.decrypt(resultSet.getString(3), secretKey) ;
+		       // System.out.println(decryptedPassword);
+				if(resultSet.getString(2).equals(email) && password.equals(decryptedPassword) && resultSet.getString(4).equals("admin"))
 				{
-					  RequestDispatcher rd=request.getRequestDispatcher("/adminpage");
+					  RequestDispatcher rd=request.getRequestDispatcher("/AdminPage.jsp");
 					  rd.forward(request, response);
 					  flag=1;
 					  break;
