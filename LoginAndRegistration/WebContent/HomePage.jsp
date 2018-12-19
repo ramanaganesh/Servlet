@@ -1,5 +1,6 @@
 <html>
 <body>  
+<h1>HOME     PAGE</h1>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>

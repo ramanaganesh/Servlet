@@ -30,7 +30,7 @@ public class RegisterPage extends HttpServlet
 	        String role=request.getParameter("role");
 	        ServletContext context=getServletContext();
 	        String secretKey=context.getInitParameter("key"); 
-	        System.out.println(secretKey+" "+password);
+	        //System.out.println(secretKey+" "+password);
 	        String encryptedPassword = AES.encrypt(password, secretKey) ;
 			Connection con=Connecting.getConnect();	
 				
